@@ -2,9 +2,18 @@
 
 var tttAI = function() {
 
-  var module = {}
+/* 
+AI Functionality:
+(1) choose first move if AI goes first
+(2) if turn_count >= 4, check if AI can win next turn	chooseFirstMove()
+(3) if AI cant win next turn, check if Human can win next turn + block it	checkForAiWinNextTurn()
+(4) if Human cant win next turn, check if Human can fork next turn (i.e force AI to block 1 of 2 possible winning moves) and block the fork.  call to checkSame()
+(5) if Human cant fork next turn, check if AI can fork next turn call to checkSame
+(6) if nothing else, play a corner that is 1 clear space away from another AI-occupied corner, or the middle, else pick randomly from whatever is left.  Get the set and pick with bucketedRandom()
+(7) return the coordinates of the chosen move and call Game.place();  
+*/ 
 
-  var tttkjs = require('tic_tac_toe.js');
+  var module = {}
 
   this.bucketedRandomSpectrum = function(lowerBound, upperBound) {
       /*this function randomly chooses numbers within a specified range*/
@@ -56,8 +65,10 @@ this.checkForAiWinNextTurn = function() {
       }
     }
   }
-  //how to reload the currentBoard?
+  //reload the currentBoard
 }
+
+
 return module
 
 })()

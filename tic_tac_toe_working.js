@@ -25,12 +25,12 @@ var tic_tac_toe = (function() {
 		this.values = this.getValues(this.length)
 
 		this.getBoard = function() {
-			//return this.values
-			return "hello Im board values1";
+			return this.values
 		}
 
 		this.place = function(x_coord, y_coord, character) {
-			this.values[x_coord][y_coord] = character; 
+			this.values[x_coord][y_coord] = character; //Ken's
+			//TODO: Remove the ken comment when he's not looking
 		}
 	}
 
@@ -43,7 +43,6 @@ var tic_tac_toe = (function() {
 		this.getBoard = function() {
 			var board_instance = this.board
 			var board_values = board_instance.getBoard()
-			//console.log(".getBoard") 
 			return board_values
 				//Alternative to the above:
 				//return this.board.getBoard()
@@ -95,27 +94,6 @@ var tic_tac_toe = (function() {
 				}
 			}
 			return value
-		}
-/*Design of replacement algorithm
-(1) convert printBoard coords to array of pairs ex [00,11,22]
-(2) convert list of WINNING_COORDINATES into 9 such pair arrays
-(3) for each player, cycle through each WINNING_COORDINATE pair array.
-(4) if that player has a match against any of the 9 pair arrays return that player is winner.
-*/
-
-
-//get the player turn i.,e. x or o.
-//then check for if any of the sets of winning coordinates are in board, using printBoard
-
-		this.arraysEqualV2 = function(coord_list, array_2){
-			if (array_1.length == array_2.length){
-				for (loopCounter = 0; loopCounter = array_1.length; loopCounter++){
-					if(array_1[loopCounter] == array_1[loopCounter]){
-						return true;
-					}
-				}	
-			}
-			return false;
 		}
 
 		this.WINNING_COORDINATES = [
