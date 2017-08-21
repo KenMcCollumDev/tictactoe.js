@@ -47,8 +47,9 @@ AI Functionality:
     }
     return moveHere;
   }
-  return module
   console.log(chooseFirstMove())
+  return module
+
 }
 
 this.checkForAiWinNextTurn = function() {
@@ -66,9 +67,7 @@ this.checkForAiWinNextTurn = function() {
     }
   }
   //reload the currentBoard
+	return;
 }
-
-
 return module
-
 })()

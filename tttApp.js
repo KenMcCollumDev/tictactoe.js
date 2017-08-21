@@ -12,8 +12,10 @@ $(function() {
 			//if (_this.html != "x" && _this.html != "o"){  //it doesnt pick up null or undefined either.  What exactly is this value?
 			if (_this.html != ""){
 				_this.html(tttkGjs.player_turn); //sets the html to a property of Game i.e. x or o
+				//tttkGjs.place(tttkGjs.player_turn);
 				tttkGjs.setTurn();
 				console.log("Flag 14: null");
+				console.log("clicked square  " + _this.html);
 			}
 			else{
 				alert("That space is taken.  Pick an empty square.");

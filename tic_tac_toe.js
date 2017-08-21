@@ -99,7 +99,7 @@ var tic_tac_toe = (function() {
 /*Design of replacement algorithm
 (1) convert printBoard coords to array of pairs ex [00,11,22]
 (2) convert list of WINNING_COORDINATES into 9 such pair arrays
-(3) for each player, cycle through each WINNING_COORDINATE pair array.
+(3) for player who just moved, cycle through each WINNING_COORDINATE pair array.
 (4) if that player has a match against any of the 9 pair arrays return that player is winner.
 */
 
