@@ -1,0 +1,14 @@
+		/*
+			OTHER THIMGS TO DO
+		X	1) check the winner via .getWinner		
+		X	2) clear the board (reuse new game)
+			3) save game / display games / load game with AJAX
+				//saveBoard: function(){
+				//jquery //$.post(url,data callbackfunc); //
+				//}//getGame ;)
+		s	4) finish the AI.  some basic functions are already coded + tested
+		X	5) CSS the Xs + Os larger
+`			6) prevent the board from overwriting marks on later turns
+		*/
+
+

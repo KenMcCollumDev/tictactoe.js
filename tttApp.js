@@ -8,14 +8,57 @@ $(function() {
 
 		var moveButtons = $(".button").on("click", function(e) {
 			var _this  = $(this); //keeps the button within scope...
-			console.log("_this.html !  " + _this.html  + "is here");
+			console.log("fuckyou"  + _this.data('x') + _this.data('y'));
 			//if (_this.html != "x" && _this.html != "o"){  //it doesnt pick up null or undefined either.  What exactly is this value?
-			if (_this.html != ""){
-				_this.html(tttkGjs.player_turn); //sets the html to a property of Game i.e. x or o
-				//tttkGjs.place(tttkGjs.player_turn);
-				tttkGjs.setTurn();
-				console.log("Flag 14: null");
-				console.log("clicked square  " + _this.html);
+			var boardNow = tttkGjs.printBoard();
+			var moveNow = _this.data('x') + _this.data('y')
+			console.log("subha says " + _this.data('x') + _this.data('y'));
+			console.log("moveNow says " + moveNow);
+			var boardPosition = 0;
+
+				switch (moveNow)
+				{
+					case "00":
+						boardPosition = 0;
+						break;
+					case "01":
+						boardPosition = 1;
+						break;
+					case "02":
+						boardPosition = 2;
+						break;
+					case "10":
+						boardPosition = 3;
+						break;
+					case "11":
+						boardPosition = 4;
+						break;
+					case "12":
+						boardPosition = 5;
+						break;
+					case "20":
+						boardPosition = 6;
+						break;
+					case "21":
+						boardPosition = 7;
+						break;
+					case "22":
+						boardPosition = 8;
+						break;
+					default:
+						console.log("WTF moveNow" + moveNow);
+						break;
+				} 
+			console.log("boardNow " + boardNow[1]);
+			console.log("boardPosition " + boardPosition);
+			console.log("bNBP " + boardNow[boardPosition]);
+			console.log("bNBP0 " + boardNow[0]);
+			if (boardNow[boardPosition] != ""){
+			_this.html(tttkGjs.player_turn); //displays on the board.  sets the html to a property of Game i.e. x or o
+				tttkGjs.place(_this.data('x'), _this.data('y')) // makes the game aware of the screen placement
+
+				//tttkGjs.setTurn();
+				console.log("Flag 14: " + tttkGjs.printBoard() );
 			}
 			else{
 				alert("That space is taken.  Pick an empty square.");
@@ -76,14 +119,4 @@ $(function() {
 
 //game.place(_this.data('xCoord'), _this.data('yCoord'));
 
-		/*
-			OTHER THIMGS TO DO
-		s	1) check the winner via .getWinner		
-		X	2) clear the board (reuse new game)
-			3) save game / display games / load game with AJAX
-				//saveBoard: function(){
-				//jquery //$.post(url,data callbackfunc); //
-				//}//getGame ;)
-		s	4) finish the AI.  some basic functions are already coded + tested
-		X	5) CSS the Xs + Os larger
-		*/
+

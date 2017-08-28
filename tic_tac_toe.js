@@ -25,8 +25,8 @@ var tic_tac_toe = (function() {
 		this.values = this.getValues(this.length)
 
 		this.getBoard = function() {
-			//return this.values
-			return "hello Im board values1";
+			return this.values
+			//return "hello Im board values1";
 		}
 
 		this.place = function(x_coord, y_coord, character) {
@@ -72,8 +72,9 @@ var tic_tac_toe = (function() {
 		this.printBoard = function() {
 			var board_values = this.board.getBoard()
 			for (var x = 0; x < 3; x++) {
-				console.log(board_values[x])
+				//console.log(board_values[x])
 			}
+			return board_values;
 		}
 
 		this.checkSame = function(coord_list) {
