@@ -6,16 +6,41 @@ $(function() {
 
     var module = {}
 
+		var newGameButton = document.getElementById("newGame");
+		newGameButton.onclick = function (){
+			var playOnPlayer = prompt("Play 'vs Human' or 'vs AI'?", "vs Human");
+			//window.location.reload(); // the simple way to remder the board for the new game
+			tttkGjs.turn_count = 0
+			//console.log(tttkGjs.turn_count);
+			tttkGjs.player_turn = "x"
+			//console.log(tttkGjs.player_turn);
+			tttkGjs.getBoard(); // the API way to render the board... but it doesn't draw the new board. this means I need a loop to hit each square in the table
+			var moveButtons = $(".button"); 
+			for(var buttonCounter = 0; buttonCounter < 9; buttonCounter++)
+			{
+				//console.log(buttonCounter);
+				moveButtons[buttonCounter].innerHTML = "";
+			}
+
+			console.log("We successfully made a new game");
+/*
+			for (var loopCounter = 0; loopCounter < @; loopCounter ++){
+				var _this  = $(this);
+				_this.html(null);	
+*/
+			console.log(tttkGjs.board);//success
+		};
+
+
 		var moveButtons = $(".button").on("click", function(e) {
 			var _this  = $(this); //keeps the button within scope...
 			console.log("fuckyou"  + _this.data('x') + _this.data('y'));
 			//if (_this.html != "x" && _this.html != "o"){  //it doesnt pick up null or undefined either.  What exactly is this value?
 			var boardNow = tttkGjs.printBoard();
-			var moveNow = _this.data('x') + _this.data('y')
-			console.log("subha says " + _this.data('x') + _this.data('y'));
+			var moveNow = _this.data('x').toString() + _this.data('y').toString();
 			console.log("moveNow says " + moveNow);
 			var boardPosition = 0;
-
+			
 				switch (moveNow)
 				{
 					case "00":
@@ -49,11 +74,14 @@ $(function() {
 						console.log("WTF moveNow" + moveNow);
 						break;
 				} 
-			console.log("boardNow " + boardNow[1]);
+			console.log("boardNow says" + boardNow);
 			console.log("boardPosition " + boardPosition);
-			console.log("bNBP " + boardNow[boardPosition]);
-			console.log("bNBP0 " + boardNow[0]);
-			if (boardNow[boardPosition] != ""){
+			console.log("bNBP ", boardNow[boardPosition]);
+			console.log("bNBP0 ", boardNow[0]);
+			console.log("bNBP_test of board coords", boardNow[_this.data('x')][_this.data('y')]);
+
+			//@ask joseph, re console.log: what does "bNBP ,," mean?
+			if (boardNow[_this.data('x')][_this.data('y')] == 0){
 			_this.html(tttkGjs.player_turn); //displays on the board.  sets the html to a property of Game i.e. x or o
 				tttkGjs.place(_this.data('x'), _this.data('y')) // makes the game aware of the screen placement
 
@@ -72,6 +100,7 @@ $(function() {
 						if (weiner != null) 
 							{
 								alert(weiner + " has won the game! :\) Congratulations Weiner!  ... cue to 'we are the champions!', etc");
+							newGameButton.onclick();
 								console.log("flag3");
 							}
 						else if (tttkGjs.turn_count == 9 && tttkGjs.getWinner() === null) {
@@ -88,33 +117,6 @@ $(function() {
 			// to do
 		}
 	
-
-		var newGameButton = document.getElementById("newGame");
-		newGameButton.onclick = function (){
-			var playOnPlayer = prompt("Play 'vs Human' or 'vs AI'?", "vs Human");
-			//window.location.reload(); // the simple way to remder the board for the new game
-			tttkGjs.turn_count = 0
-			//console.log(tttkGjs.turn_count);
-			tttkGjs.player_turn = "x"
-			//console.log(tttkGjs.player_turn);
-			tttkGjs.getBoard(); // the API way to render the board... but it doesn't draw the new board. this means I need a loop to hit each square in the table
-			var moveButtons = $(".button"); 
-			for(var buttonCounter = 0; buttonCounter < 9; buttonCounter++)
-			{
-				//console.log(buttonCounter);
-				moveButtons[buttonCounter].innerHTML = "";
-			}
-
-			console.log("We successfully made a new game");
-/*
-			for (vart loopCounter = 0; loopCounter < @; loopCounter ++){
-				var _this  = $(this);
-				_this.html(null);	
-*/
-			console.log(tttkGjs.board);//success
-		};
-
-		
   }) //closes the tttApp
 
 //game.place(_this.data('xCoord'), _this.data('yCoord'));
