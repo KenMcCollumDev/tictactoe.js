@@ -1,4 +1,5 @@
 'use strict'; //strict mode
+var Mathy = require ("./libMathy.js");
 
 var tttAI = function() {
 
@@ -25,7 +26,7 @@ AI Functionality:
 
   this.chooseFirstMove = function() {
     //AI randomly picks from corners and middle for first move.
-    var choice1to6 = bucketedRandomSpectrum(1, 6);
+    var choice1to6 = Mathy.bucketedRandomSpectrum(1, 6);
     console.log(choice1to6);
     var moveHere = [];
     switch (choice1to6) {
@@ -49,7 +50,6 @@ AI Functionality:
   }
   console.log(chooseFirstMove())
   return module
-
 }
 
 this.checkForAiWinNextTurn = function() {
