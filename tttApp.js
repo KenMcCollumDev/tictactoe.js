@@ -7,29 +7,32 @@ $(function() {
     var module = {}
 
 		var newGameButton = document.getElementById("newGame");
-		newGameButton.onclick = function (){
-			var playOnPlayer = prompt("Play 'vs Human' or 'vs AI'?", "vs Human");
-			//window.location.reload(); // the simple way to remder the board for the new game
-			tttkGjs.turn_count = 0
-			//console.log(tttkGjs.turn_count);
-			tttkGjs.player_turn = "x"
-			//console.log(tttkGjs.player_turn);
-			tttkGjs.getBoard(); // the API way to render the board... but it doesn't draw the new board. this means I need a loop to hit each square in the table
-			var moveButtons = $(".button"); 
-			for(var buttonCounter = 0; buttonCounter < 9; buttonCounter++)
+		newGameButton.onclick = function ()
 			{
-				//console.log(buttonCounter);
-				moveButtons[buttonCounter].innerHTML = "";
-			}
+				var playOnPlayer = prompt("Play 'vs Human' or 'vs AI'?", "vs Human");
+				//window.location.reload(); // the simple way to remder the board for the new game
+				tttkGjs.turn_count = 0
+				//console.log(tttkGjs.turn_count);
+				tttkGjs.player_turn = "x"
+				//console.log(tttkGjs.player_turn);
+				tttkGjs.getBoard(); // the API way to render the board... but it doesn't draw the new board. this means I need a loop to hit each square in the table
+				var moveButtons = $(".button"); 
+				for(var buttonCounter = 0; buttonCounter < 9; buttonCounter++)
+					{
+						//console.log(buttonCounter);
+						moveButtons[buttonCounter].innerHTML = "";
+					}
 
 			console.log("We successfully made a new game");
 /*
-			for (var loopCounter = 0; loopCounter < @; loopCounter ++){
-				var _this  = $(this);
-				_this.html(null);	
+			for (var loopCounter = 0; loopCounter < @; loopCounter ++)
+				{
+					var _this  = $(this);
+					_this.html(null);	
+
 */
 			console.log(tttkGjs.board);//success
-		};
+				};
 
 
 		var moveButtons = $(".button").on("click", function(e) {
